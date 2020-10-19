@@ -1,0 +1,57 @@
+.btn_cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  span {
+    margin-right: 20px;
+  }
+}
+.unit--desc-i {
+  margin-right: 40px;
+  img {
+    
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    width: 19px;
+    height: auto;
+    
+  }
+}
+.stepper {
+  .stepper-arrow{
+    background: url(./misc/images//icons/product/count--i.png);
+  }
+}
+.descriptionWrapper {
+  display: inline-block;
+  // position: absolute;
+  max-width: 470px;
+  // height: 500px;
+  margin: 0 10px;
+  .description {
+    font-size: 13px;
+    
+    
+  }
+}
+.bay{
+ width: 148px;
+ height: 40px;
+ background: green;
+ border: none;
+ color: #ffffff;
+ text-transform: uppercase;
+ &:hover{
+  background: darken( green, 10%)
+ }
+}
+
+@media(max-width: 999px) and (min-width: 0px) {
+  .product_horizontal {
+    height: 950px;
+    
+    
+  }
+}
