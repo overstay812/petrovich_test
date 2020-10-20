@@ -1,3 +1,4 @@
+
 .btn_cart {
   display: flex;
   flex-direction: row;
@@ -46,6 +47,11 @@
  &:hover{
   background: darken( green, 10%)
  }
+}
+
+.imagePrimary {
+  width: 220px;
+  height: 220px;
 }
 
 @media(max-width: 999px) and (min-width: 0px) {

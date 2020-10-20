@@ -12,32 +12,40 @@ const Temlate = ({
   assocProducts,
   isActive,
   productId,
+  priceGold,
   priceGoldAlt,
+  priceRetail,
   priceRetailAlt,
   unit,
   unitFull,
   unitAlt,
   unitRatio,
   unitRatioAlt,
+  primaryImageUrl
 }) => {
   let codeNumber = +code; //removing zero in front of
   let newCodeString = codeNumber.toString();
 
   let assocProductsLinks = assocProducts.split(";"); // assocProducts to array
 
-  let modificator = "_220x220_1"; //adding link  modificator
-  let link = "./misc/df126-52f2-11e5-b9a9-00259036a192.jpg";
-  let linkArr = link.split(".jpg");
-  let linkString = `${linkArr[0]}${modificator}.jpg`;
-  let imgLink = require(`${linkString}`); //here will be put real img link from real server
+
+  // let modificator = "_220x220_1"; //adding link  modificator
+  
+  let linkArr = primaryImageUrl.split(".jpg");
+  let linkString = `https:${linkArr[0]}.jpg`;
+  
+  let imgLink =  linkString.replace('tdp', 'cs.petrovich')
+  
 
   let unitFullElement = `${unitFull}ми`;
 
   const [inputValue, setInputValue]= useState(1) //get quantity
 
+const [active, setActive] = useState(true)
+
   console.log(inputValue);
   return (
-    <div>1
+    <div className="wrapper">
       <main className="grid container">
         <div className="sub_category_page">
           <div className="column_right column_right_products_container">
@@ -53,7 +61,7 @@ const Temlate = ({
                     </div>
                     <div className="product_photo">
                       <a href="#" className="url--link product__link">
-                        <img src={imgLink} />
+                        <img className="imagePrimary" src={imgLink} />
                       </a>
                     </div>
                     <div className="product_description">
@@ -92,10 +100,10 @@ const Temlate = ({
 
                     <div className="product_units">
                       <div className="unit--wrapper">
-                        <div className="unit--select unit--active">
-                          <p className="ng-binding">За м. кв.</p>
+                        <div className={active? "unit--select unit--active": "unit--select"} onClick={()=>!active && setActive(!active)}>
+                          <p className="ng-binding ">За м. кв.</p>
                         </div>
-                        <div className="unit--select">
+                        <div className={active? "unit--select": "unit--select unit--active" } onClick={()=>active && setActive(!active)}>
                           <p className="ng-binding">За упаковку</p>
                         </div>
                       </div>
@@ -105,7 +113,7 @@ const Temlate = ({
                         По карте <br /> клуба
                       </span>
                       <span className="goldPrice">
-                        {(priceGoldAlt * inputValue).toFixed(2)}
+                        {active? (priceGoldAlt * inputValue).toFixed(2) : (priceGold * inputValue).toFixed(2) }
                       </span>
                       <span className="rouble__i black__i">
                         <img src={roubleBlack} alt="" />
@@ -113,14 +121,14 @@ const Temlate = ({
                     </p>
                     <p className="product_price_default">
                       <span className="retailPrice">
-                        {(priceRetailAlt* inputValue).toFixed(2)}
+                        {active?(priceRetailAlt* inputValue).toFixed(2): (priceRetail* inputValue).toFixed(2)}
                       </span>
                       <span className="rouble__i black__i">
                         <img src={roubleGray} alt="" />
                       </span>
                     </p>
                     <div className="product_price_points">
-                      <p className="ng-binding">Можно купить за 231,75 балла</p>
+                      <p className="ng-binding">Можно купить за {((priceGoldAlt * inputValue) / 2).toFixed(2)} балла</p>
                     </div>
                     {/* <div className="list--unit-padd"></div> */}
                     <div className="list--unit-desc">
