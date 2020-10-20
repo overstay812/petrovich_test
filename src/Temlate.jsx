@@ -98,7 +98,8 @@ const [active, setActive] = useState(true)
                       </button>
                     </div>
 
-                    <div className="product_units">
+ <div className="conterWrapper">
+ <div className="product_units">
                       <div className="unit--wrapper">
                         <div className={active? "unit--select unit--active": "unit--select"} onClick={()=>!active && setActive(!active)}>
                           <p className="ng-binding ">За м. кв.</p>
@@ -174,6 +175,7 @@ const [active, setActive] = useState(true)
                         <span className="ng-binding">В корзину</span>
                       </span>
                     </div>
+ </div>
                   </div>
                 </div>
               </div>
