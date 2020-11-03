@@ -52,7 +52,7 @@ const [active, setActive] = useState(true)
             <div className="product__area">
               <div id="products_section">
                 <div className="products_page pg_0">
-                  <div className="product product_horizontal" style={{display="table"}}>
+                  <div className="product product_horizontal" style={{display:"table"}}>
                     <span className="product_code">Код: {newCodeString}</span>
                     <div className="product_status_tooltip_container">
                       <span className="product_status">
